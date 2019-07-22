@@ -6,17 +6,15 @@ module.exports = {
 		node: true,
 		browser: true
 	},
-	parserOptions: {
-		parser: "babel-eslint",
-		// specifying a module sourcetype prevent eslint from marking import statements as errors
-		sourceType: "module"
-	},
 	extends: [
 		// use the recommended rule set for both plain javascript and vue
 		"eslint:recommended",
-		"plugin:vue/recommended"
+		"plugin:vue/recommended",
+		"standard"
 	],
 	rules: {
+		"no-new": 0,
+		"quote-props": 0,
 		// we should always disable console logs and debugging in production
 		"no-console": process.env.NODE_ENV === "production" ? "error" : "off",
 		"no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
