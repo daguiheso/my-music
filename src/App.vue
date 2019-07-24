@@ -1,5 +1,6 @@
 <template lang="pug">
   #app
+    mm-header
     section.section
       nav
         input(
@@ -10,20 +11,28 @@
         a.button.info(@click="search") Buscar
         a.button.danger &times;
 
-    p
-      small {{ searchMessage }}
+      p
+        small {{ searchMessage }}
 
-    ul
-      li(v-for="t in tracks")
-        | {{ t.name }} - {{ t.artists[0].name }}
+      ul
+        li(v-for="t in tracks")
+          | {{ t.name }} - {{ t.artists[0].name }}
+
+    mm-footer
 
 </template>
 
 <script>
 import musicService from './services/music'
+import MmFooter from './components/layout/Footer'
+import MmHeader from './components/layout/Header'
 
 export default {
   name: 'app',
+  components: {
+    MmFooter,
+    MmHeader
+  },
   data () {
     return {
       searchQuery: '',
