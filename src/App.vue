@@ -14,7 +14,8 @@
       small {{ searchMessage }}
 
     ul
-      li(v-for="t in tracks") {{ t.name }} - {{ t.artist }}
+      li(v-for="t in tracks")
+        | {{ t.name }} - {{ t.artists[0].name }}
 
 </template>
 
@@ -36,9 +37,11 @@ export default {
   },
   methods: {
     search () {
+      if (!this.searchQuery) return
+
       musicService.search(this.searchQuery)
         .then(res => {
-          console.log(res.tracks)
+          this.tracks = res.tracks.items
         })
     }
   }
