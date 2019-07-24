@@ -19,11 +19,7 @@
 </template>
 
 <script>
-const tracks = [
-  { name: 'Muchacha', artist: 'Luis Alberto Spinetta' },
-  { name: 'Creep', artist: 'Radiohead' },
-  { name: 'The Verve', artist: 'The Symphony' }
-]
+import musicService from './services/music'
 
 export default {
   name: 'app',
@@ -40,7 +36,10 @@ export default {
   },
   methods: {
     search () {
-      this.tracks = tracks
+      musicService.search(this.searchQuery)
+        .then(res => {
+          console.log(res.tracks)
+        })
     }
   }
 }
