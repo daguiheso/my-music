@@ -16,22 +16,24 @@
 
       ul
         li(v-for="t in tracks")
-          | {{ t.name }} - {{ t.artists[0].name }}
+          mm-track(:track="t")
 
     mm-footer
 
 </template>
 
 <script>
-import musicService from './services/music'
-import MmFooter from './components/layout/Footer'
-import MmHeader from './components/layout/Header'
+import musicService from '@/services/music'
+import MmFooter from '@/components/layout/Footer'
+import MmHeader from '@/components/layout/Header'
+import MmTrack from '@/components/Track'
 
 export default {
   name: 'app',
   components: {
     MmFooter,
-    MmHeader
+    MmHeader,
+    MmTrack
   },
   data () {
     return {
@@ -59,4 +61,16 @@ export default {
 
 <style lang="scss">
   @import './scss/main.scss';
+
+  .section {
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+      li {
+        width: 100%;
+        max-width: 320px;
+      }
+    }
+  }
 </style>
