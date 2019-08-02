@@ -15,7 +15,9 @@
         small {{ searchMessage }}
       ul
         li(v-for="t in tracks")
-          mm-track(:track="t")
+          mm-track(:track="t",
+          @select="setSelectedTrack"
+          :class="{ 'is-active': t.id === selectedTrack }")
     mm-loader(v-show="isLoading")
 
     mm-footer
@@ -41,7 +43,8 @@ export default {
     return {
       searchQuery: '',
       tracks: [],
-      isLoading: false
+      isLoading: false,
+      selectedTrack: ''
     }
   },
   computed: {
@@ -59,6 +62,9 @@ export default {
           this.tracks = res.tracks.items
           this.isLoading = false
         })
+    },
+    setSelectedTrack (id) {
+      this.selectedTrack = id
     }
   }
 }
@@ -77,5 +83,9 @@ export default {
         max-width: 320px;
       }
     }
+  }
+
+  .is-active {
+    border: 3px solid green !important;
   }
 </style>

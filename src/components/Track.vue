@@ -13,7 +13,7 @@
       .content
         small {{duration_ms}}
         nav.level
-          a
+          a(@click="selectTrack")
             span ▶️
 
 </template>
@@ -22,6 +22,11 @@
 export default {
   props: {
     track: { type: Object, required: true }
+  },
+  methods: {
+    selectTrack () {
+      this.$emit('select', this.track.id)
+    }
   }
 }
 </script>
@@ -74,6 +79,9 @@ export default {
         position: absolute;
         top: 15px;
         right: 10px;
+        .level {
+          cursor: pointer;
+        }
       }
     }
   }
