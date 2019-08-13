@@ -11,7 +11,7 @@
           h4.title {{track.name}}
           h5.subtitle {{track.artists[0].name}}
       .content
-        small {{duration_ms}}
+        small {{track.duration_ms}}
         nav.level
           a(@click="selectTrack")
             span ▶️
@@ -26,6 +26,8 @@ export default {
   methods: {
     selectTrack () {
       this.$emit('select', this.track.id)
+
+      this.$bus.$emit('set-track', this.track)
     }
   }
 }

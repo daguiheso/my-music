@@ -1,7 +1,6 @@
 <template lang="pug">
   header.header
     strong My Music
-    p .
     mm-player
 </template>
 
@@ -15,7 +14,7 @@ export default {
 
 <style lang="scss">
 .header {
-  height: 55px;
+  min-height: 55px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,5 +26,6 @@ export default {
   right: 0;
   top: 0;
   padding: 0 16px;
+  z-index: 2;
 }
 </style>
