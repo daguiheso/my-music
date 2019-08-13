@@ -2,7 +2,16 @@
   header.header
     strong My Music
     p .
+    mm-player
 </template>
+
+<script>
+import MmPlayer from '@/components/Player'
+
+export default {
+  components: { MmPlayer }
+}
+</script>
 
 <style lang="scss">
 .header {
