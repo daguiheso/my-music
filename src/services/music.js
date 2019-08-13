@@ -14,4 +14,14 @@ musicService.search = function (q) {
     })
 }
 
+musicService.getById = function (id) {
+  return fetch(`${configService.apiUrl}/tracks/${id}`)
+    .then(res => res.json())
+    .then(res => res)
+    .catch(error => {
+      console.log(error)
+      debugger
+    })
+}
+
 export default musicService

@@ -1,5 +1,5 @@
 <template lang="pug">
-  .card
+  .card(v-if="track.album")
     .card-image
       figure.image
         img(:src="track.album.images[0].url")
