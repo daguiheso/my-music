@@ -15,6 +15,8 @@
         nav.level
           a(@click="selectTrack")
             span ▶️
+          a(@click="goToTrack(track.id)")
+            span 👽
 
 </template>
 
@@ -28,6 +30,9 @@ export default {
       this.$emit('select', this.track.id)
 
       this.$bus.$emit('set-track', this.track)
+    },
+    goToTrack (id) {
+      this.$router.push({ name: 'track', params: { id } })
     }
   }
 }
