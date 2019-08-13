@@ -1,6 +1,10 @@
 <template lang="pug">
   #app
     mm-header
+
+    mm-notification(v-show="showNotification")
+      p(slot="body") No se encontraron resultados
+
     section.section(v-show="!isLoading")
       nav
         input(
@@ -26,10 +30,14 @@
 
 <script>
 import musicService from '@/services/music'
+
 import MmFooter from '@/components/layout/Footer'
 import MmHeader from '@/components/layout/Header'
+
 import MmTrack from '@/components/Track'
+
 import MmLoader from '@/components/shared/Loader'
+import MmNotification from '@/components/shared/Notification'
 
 export default {
   name: 'app',
@@ -37,19 +45,30 @@ export default {
     MmFooter,
     MmHeader,
     MmTrack,
-    MmLoader
+    MmLoader,
+    MmNotification
   },
   data () {
     return {
       searchQuery: '',
       tracks: [],
       isLoading: false,
-      selectedTrack: ''
+      selectedTrack: '',
+      showNotification: false
     }
   },
   computed: {
     searchMessage () {
       return `${this.tracks.length} results`
+    }
+  },
+  watch: {
+    showNotification () {
+      if (this.showNotification) {
+        setTimeout(() => {
+          this.showNotification = false
+        }, 3000)
+      }
     }
   },
   methods: {
@@ -59,6 +78,7 @@ export default {
 
       musicService.search(this.searchQuery)
         .then(res => {
+          this.showNotification = res.tracks.total === 0
           this.tracks = res.tracks.items
           this.isLoading = false
         })
