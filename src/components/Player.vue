@@ -1,5 +1,5 @@
 <template lang="pug">
-  .content
+  .content(v-if="track.album")
     p
       img(:src="track.album.images[2].url")
     p
