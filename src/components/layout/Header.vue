@@ -1,6 +1,10 @@
 <template lang="pug">
   header.header
     strong My Music
+    nav
+      ul
+        router-link(:to="{ name: 'search' }") Buscar
+        router-link(to="about") Nosotros
     mm-player
 </template>
 
