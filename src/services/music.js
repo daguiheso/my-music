@@ -10,7 +10,6 @@ musicService.search = function (q) {
     .then(res => res)
     .catch(error => {
       console.log(error)
-      debugger
     })
 }
 
@@ -20,7 +19,6 @@ musicService.getById = function (id) {
     .then(res => res)
     .catch(error => {
       console.log(error)
-      debugger
     })
 }
 
