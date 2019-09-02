@@ -19,9 +19,12 @@
         small {{ searchMessage }}
       ul
         li(v-for="t in tracks")
-          mm-track(:track="t",
-          @select="setSelectedTrack"
-          :class="{ 'is-active': t.id === selectedTrack }")
+          mm-track(
+            v-blur="t.preview_url"
+            :track="t",
+            @select="setSelectedTrack"
+            :class="{ 'is-active': t.id === selectedTrack }"
+          )
     mm-loader(v-show="isLoading")
 
 </template>
