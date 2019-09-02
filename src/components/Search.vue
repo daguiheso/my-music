@@ -9,7 +9,8 @@
         input(
           type="text",
           placeholder="search songs",
-          v-model="searchQuery"
+          v-model="searchQuery",
+          @keyup.enter="search"
         )
         a.button.info(@click="search") Buscar
         a.button.danger &times;
