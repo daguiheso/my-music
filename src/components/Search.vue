@@ -1,8 +1,8 @@
 <template lang="pug">
   main
-
-    mm-notification(v-show="showNotification")
-      p(slot="body") No se encontraron resultados
+    transition(name="move")
+      mm-notification(v-show="showNotification")
+        p(slot="body") No se encontraron resultados
 
     section.section(v-show="!isLoading")
       nav
@@ -25,7 +25,8 @@
             @select="setSelectedTrack"
             :class="{ 'is-active': t.id === selectedTrack }"
           )
-    mm-loader(v-show="isLoading")
+    transition(name="move")
+      mm-loader(v-show="isLoading")
 
 </template>
 
