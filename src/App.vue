@@ -2,17 +2,27 @@
   #app
     mm-header
 
+    h1 Counter
+    p {{ count }}
+    div
+      button(@click="increment") +
+      button(@click="decrement") -
+
     router-view
 
     mm-footer
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import MmFooter from '@/components/layout/Footer'
 import MmHeader from '@/components/layout/Header'
 
 export default {
   name: 'app',
+  computed: {
+    ...mapState(['count'])
+  },
   components: {
     MmFooter,
     MmHeader
