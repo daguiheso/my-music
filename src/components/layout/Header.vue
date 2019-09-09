@@ -2,9 +2,11 @@
   header.header
     strong My Music
     nav
+      button(@click="selectLang('en')") 🏴󠁧󠁢󠁥󠁮󠁧󠁿󠁧
+      button(@click="selectLang('es')") 🇨🇴󠁧
       ul
-        router-link(:to="{ name: 'search' }") Buscar
-        router-link(to="about") Nosotros
+        router-link(to="search") {{ $t('search') }}
+        router-link(to="about") {{ $t('about') }}
     mm-player
 </template>
 
@@ -12,7 +14,12 @@
 import MmPlayer from '@/components/Player'
 
 export default {
-  components: { MmPlayer }
+  components: { MmPlayer },
+  methods: {
+    selectLang (lang) {
+      this.$i18n.locale = lang
+    }
+  }
 }
 </script>
 
