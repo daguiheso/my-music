@@ -7,6 +7,7 @@
     div
       button(@click="increment") +
       button(@click="decrement") -
+    button(@click="incrementAsync") + Async
 
     router-view
 
@@ -31,7 +32,13 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['increment', 'decrement'])
+    ...mapMutations(['increment', 'decrement']),
+    incrementAsync () {
+      this.$store.dispatch('incrementAsync', { number: 2 })
+        .then(() => {
+          console.log('Action finish...')
+        })
+    }
   }
 }
 </script>
