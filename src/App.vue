@@ -14,18 +14,21 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 import MmFooter from '@/components/layout/Footer'
 import MmHeader from '@/components/layout/Header'
 
 export default {
   name: 'app',
-  computed: {
-    ...mapState(['count'])
-  },
   components: {
     MmFooter,
     MmHeader
+  },
+  computed: {
+    ...mapState(['count'])
+  },
+  methods: {
+    ...mapMutations(['increment', 'decrement'])
   }
 }
 </script>
