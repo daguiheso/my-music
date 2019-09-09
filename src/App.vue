@@ -3,7 +3,7 @@
     mm-header
 
     h1 Counter
-    p {{ count }}
+    p {{ count }} - {{ double }}
     div
       button(@click="increment") +
       button(@click="decrement") -
@@ -25,7 +25,10 @@ export default {
     MmHeader
   },
   computed: {
-    ...mapState(['count'])
+    ...mapState(['count']),
+    double () {
+      return this.$store.getters.getDouble
+    }
   },
   methods: {
     ...mapMutations(['increment', 'decrement'])
