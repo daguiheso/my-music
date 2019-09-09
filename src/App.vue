@@ -36,7 +36,7 @@ export default {
     incrementAsync () {
       this.$store.dispatch('incrementAsync', { number: 2 })
         .then(() => {
-          console.log('Action finish...')
+          // console.log('Action finish...')
         })
     }
   }
